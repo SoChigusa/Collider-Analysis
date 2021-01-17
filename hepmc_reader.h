@@ -8,35 +8,14 @@
 #ifndef HEPMC_READER_H
 #define HEPMC_READER_H
 
+#include "particle.h"
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <unordered_map>
-
-struct Particle {
-  int pID;
-  double px;
-  double py;
-  double pz;
-  double E;
-  double m;
-  double Nsub;
-  double pT() const { return sqrt(px*px+py*py); }
-  double p() const { return sqrt(px*px+py*py+pz*pz); }
-  double y() const {
-    return -0.5*log((E+pz)/(E-pz));
-  }
-  double eta() const {
-    double t = pT() / pz;
-    return -log((sqrt(t*t+1.)-1.)/fabs(t));
-  }
-  double phi() const {
-    double ac = acos(px/pT());
-    return py > 0. ? ac : 2.*M_PI-ac;
-  }
-};
 
 void copyParticle(Particle & p1, const Particle & p2);
 double invMass(const Particle & p1, const Particle & p2);

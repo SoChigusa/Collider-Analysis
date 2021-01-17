@@ -1,9 +1,9 @@
-CXX := icpc
-CXXFLAGS := -g -Wall -std=c++11 -Ofast
+CXX := g++
+CXXFLAGS := -g -Wall -std=c++11 -O3
 
 all:		particle.o lhereader.o hepmc_reader.o
 
-%.o:	%.cpp
+%.o:	%.cpp %.h
 		$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 test.out:	test.cpp
