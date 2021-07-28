@@ -35,7 +35,7 @@ public:
 
   int displayN() { return nevent; }
   double displayCrossSection() { return xsec; }
-  Event displayEvent(const int n) { return ev[n]; }
+  void displayEvent(const int n, Event &e) { e = ev[n]; }
   void displayHeader(std::string &buf) { buf = vec_buf[0]; }
   void displayEventStr(std::string &buf, const int n) { buf = vec_buf[n + 1]; }
   void displayFooter(std::string &buf) { buf = vec_buf.back(); }
@@ -111,6 +111,7 @@ void LHEReader::saveEvent(std::ifstream &ifs, int &n) {
     getline(ifs, pinfo);
     sp_pinfo = split(pinfo, ' ');
     p.pID = stoi(sp_pinfo[0]);
+    p.status = stoi(sp_pinfo[1]);
     p.E = stod(sp_pinfo[9]);
     p.px = stod(sp_pinfo[6]);
     p.py = stod(sp_pinfo[7]);

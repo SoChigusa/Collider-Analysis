@@ -13,6 +13,7 @@ inline double sqr(double x) { return x * x; }
 
 struct Particle {
   int pID;
+  int status; // -1 for initial, 1 for final
   double px;
   double py;
   double pz;
