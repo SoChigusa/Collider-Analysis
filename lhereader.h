@@ -26,7 +26,7 @@ private:
   std::vector<Event> ev;
 
 public:
-  LHEReader(std::string);
+  LHEReader(std::string, bool silent = false);
   int findStr(std::ifstream &, std::string &, const std::string &);
   void nextNline(std::ifstream &, std::string &, const int);
   std::vector<std::string> split(const std::string &, char);
@@ -42,7 +42,7 @@ public:
 };
 
 // read aMC@NLO LHE file
-LHEReader::LHEReader(std::string fname) {
+LHEReader::LHEReader(std::string fname, bool silent) {
   std::ifstream ifs(fname);
   std::string buf_ne, buf_pb;
   findStr(ifs, buf_ne, "nevents");
@@ -54,8 +54,10 @@ LHEReader::LHEReader(std::string fname) {
   nevent = stoi(v[0]);
   v = split(buf_pb, ' ');
   xsec = stod(v[0]);
-  std::cout << fname << ": # of events = " << nevent << ", sigma = " << xsec
-            << " pb." << std::endl;
+  if (!silent) {
+    std::cout << fname << ": # of events = " << nevent << ", sigma = " << xsec
+              << " pb." << std::endl;
+  }
 
   ev.resize(nevent);
   int n = 0;
