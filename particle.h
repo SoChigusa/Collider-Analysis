@@ -33,12 +33,17 @@ struct Particle {
   double cos_theta() const { return pz / sqrt(px * px + py * py + pz * pz); }
   double sin_theta() const { return pT() / sqrt(px * px + py * py + pz * pz); }
   double eta() const {
-    double t = pT() / pz;
-    return -log((sqrt(t * t + 1.) - 1.) / fabs(t));
+    double th = atan2(pT(), pz); // in (y,x) ordering
+    return -log(tan(0.5 * th));
   }
-  double phi() const {
-    double ac = acos(px / pT());
-    return py > 0. ? ac : 2. * M_PI - ac;
+  double phi() const { // returns val in (-pi, pi)
+    return atan2(py, px);
+  }
+  double dot3D(Particle arg_p) const {
+    return px * arg_p.px + py * arg_p.py + pz * arg_p.pz;
+  }
+  double cos_theta(Particle arg_p) const {
+    return dot3D(arg_p) / (p() * arg_p.p());
   }
 };
 
