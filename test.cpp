@@ -6,7 +6,7 @@
 */
 
 #include "particle.h"
-#include "lhereader.h"
+#include "lhe_reader.h"
 #include "hepmc_reader.h"
 
 int main() {
