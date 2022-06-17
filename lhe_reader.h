@@ -25,13 +25,15 @@ private:
   std::vector<std::string> vec_buf;
   std::vector<Event> ev;
 
-public:
-  LHEReader(std::string, bool silent = false);
+  // private functions for internal use
   int findStr(std::ifstream &, std::string &, const std::string &);
   void nextNline(std::ifstream &, std::string &, const int);
   std::vector<std::string> split(const std::string &, char);
   void saveEvent(std::ifstream &, int &);
   int saveStr(std::ifstream &arg_ifs, const std::string &arg_f);
+
+public:
+  LHEReader(std::string, bool silent = false);
 
   int displayN() { return nevent; }
   double displayCrossSection() { return xsec; }
@@ -118,7 +120,7 @@ void LHEReader::saveEvent(std::ifstream &ifs, int &n) {
     p.px = stod(sp_pinfo[6]);
     p.py = stod(sp_pinfo[7]);
     p.pz = stod(sp_pinfo[8]);
-    p.m = stod(sp_pinfo[9]);
+    p.m = stod(sp_pinfo[10]);
     event.p.push_back(p);
   }
 

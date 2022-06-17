@@ -1,13 +1,10 @@
 CXX := g++
-CXXFLAGS := -g -Wall -std=c++11 -O3
+CXXFLAGS := -g -Wall -std=c++11 -O2
 
-all:		particle.o lhe_reader.o hepmc_reader.o
-
-%.o:	%.cpp %.h
-		$(CXX) $(CXXFLAGS) -o $@ -c $<
+all:		test.out
 
 test.out:	test.cpp
-		$(CXX) $(CXXFLAGS) -o test.o particle.o lhe_reader.o hepmc_reader.o
+		$(CXX) $(CXXFLAGS) -o test.out test.cpp
 
 clean:
 		rm -rf *.o

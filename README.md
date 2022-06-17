@@ -18,7 +18,7 @@ The `Particle` struct contains the following information
 - `pID`  
   Particle ID defined [here](https://pdg.lbl.gov/2019/reviews/rpp2019-rev-monte-carlo-numbering.pdf)
 - `status`  
-  -1 (1) for a initial (final) state particle
+  -1 (1) for an initial (final) state particle and 2 for an initial state radiation
 - `px`  
   x component of the momentum
 - `py`  
@@ -57,7 +57,7 @@ By combining with another `Particle` struct, it can also calculate the following
 In order to read a `.lhe` file, simply execute
 
 ``` c++
-MyLHEReader = LHEReader("path-to-LHE-file");
+LHEReader myLHEReader = LHEReader("path-to-LHE-file");
 ```
 
 This code stores information of all events in the `.lhe` file in the `MyLHEReader` object.
@@ -72,7 +72,7 @@ To access the $n$-th event ($0\leq n<N$), you should do
 
 ``` c++
 Event ev;
-MyLHEReader.diplay(n, ev);
+myLHEReader.diplay(n, ev);
 ```
 
 The `Event` struct is defined as
