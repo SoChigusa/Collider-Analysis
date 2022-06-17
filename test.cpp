@@ -17,8 +17,7 @@ int main() {
   try {
 
     // LHE reader example
-    // char ifname[] = "path-to-LHE-file";
-    char ifname[] = "/Users/SoChigusa/MG5_aMC_v3_4_0/mumu2axXX/Events/run_01/unweighted_events.lhe";
+    char ifname[] = "<path-to-LHE-file>";
     LHEReader myLHEReader = LHEReader(ifname);
     std::cout << "Total number of events: " << myLHEReader.displayN() << std::endl;
     std::cout << "Cross section: " << myLHEReader.displayCrossSection() << " pb" << std::endl;
