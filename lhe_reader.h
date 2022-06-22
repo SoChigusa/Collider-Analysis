@@ -46,6 +46,10 @@ public:
 // read aMC@NLO LHE file
 LHEReader::LHEReader(std::string fname, bool silent) {
   std::ifstream ifs(fname);
+  if(!ifs) {
+    throw "Error: Input LHE file does not exist.";
+  }
+
   std::string buf_ne, buf_pb;
   findStr(ifs, buf_ne, "nevents");
   findStr(ifs, buf_pb, "<init>");

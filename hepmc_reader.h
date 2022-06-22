@@ -80,6 +80,10 @@ double momSq(const Particle &p1, const Particle &p2) {
 HepMCReader::HepMCReader(const std::string &arg_ifname)
     : nev(-1), ifs(arg_ifname), isAnalyze(false), isAllStates(false),
       isAllFinalStates(false), isOutputLines(false) {
+  if(!ifs) {
+    throw "Error: Input hepmc file does not exist.";
+  }
+
   std::cout << "Start reading " << arg_ifname << std::endl;
   // get first event number
   std::string tmp;

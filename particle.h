@@ -29,7 +29,7 @@ struct Particle {
   }
   double pT() const { return sqrt(px * px + py * py); }
   double p() const { return sqrt(px * px + py * py + pz * pz); }
-  double y() const { return -0.5 * log((E + pz) / (E - pz)); }
+  double y() const { return 0.5 * log((E + pz) / (E - pz)); }
   double cos_theta() const { return pz / sqrt(px * px + py * py + pz * pz); }
   double sin_theta() const { return pT() / sqrt(px * px + py * py + pz * pz); }
   double eta() const {

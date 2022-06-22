@@ -11,7 +11,6 @@
 
 int main() {
 
-  const std::time_t start = std::time(nullptr);
   std::cout << std::scientific << std::setprecision(6);
 
   try {
@@ -33,6 +32,5 @@ int main() {
   catch(const char * a) { std::cerr << a; return -1; }
   catch(...) { std::cerr << "Unknown type of exception caught.\n"; return -1; }
   
-  std::cout << "Finish at " << std::time(nullptr)-start << std::endl;
   return 0;
 }
