@@ -84,3 +84,10 @@ struct Event {
 ```
 
 and the vector `p` is a list of `Particle` structs that contains information of all initial and final state particles of the $n$-th event.
+
+## Examples
+
+There are several example source codes in the `examples` directory.
+
+- extract_info_from_LHE.dat  
+  Reads a LHE file and extract particle IDs and 4-momenta of all the final state particles.

@@ -1,4 +1,3 @@
-
 /** \file main.cpp
     - Author:      So Chigusa
     - Since:       2019/11/06
@@ -9,11 +8,13 @@
 #include "lhe_reader.h"
 // #include "hepmc_reader.h"
 
-int main() {
+int main()
+{
 
   std::cout << std::scientific << std::setprecision(6);
 
-  try {
+  try
+  {
 
     // LHE reader example
     char ifname[] = "<path-to-LHE-file>";
@@ -23,14 +24,26 @@ int main() {
 
     Event ev;
     myLHEReader.displayEvent(0, ev);
-    for(auto p : ev.p) {
+    for (auto p : ev.p)
+    {
       std::cout << "pID = " << p.pID << ",\t p = (" << p.E << ", " << p.px << ", " << p.py << ", " << p.pz << ")" << std::endl;
     }
-
   }
-  catch(const std::string & a) { std::cerr << a; return -1; }
-  catch(const char * a) { std::cerr << a; return -1; }
-  catch(...) { std::cerr << "Unknown type of exception caught.\n"; return -1; }
-  
+  catch (const std::string &a)
+  {
+    std::cerr << a << std::endl;
+    return -1;
+  }
+  catch (const char *a)
+  {
+    std::cerr << a << std::endl;
+    return -1;
+  }
+  catch (...)
+  {
+    std::cerr << "Unknown type of exception caught.\n";
+    return -1;
+  }
+
   return 0;
 }
